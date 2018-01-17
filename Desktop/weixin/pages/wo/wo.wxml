@@ -1,0 +1,5 @@
+<view class="wo">
+<image src="{{a}}" class='a' bindtap='location'>tupain</image>
+<text class='word1' bindtap='changeImg'>点击更换头像</text>
+<view class='line'></view>
+</view>

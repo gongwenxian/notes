@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/dk/dk",
+    "pages/wo/wo"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#0cc",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "首页",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/首页.png",
+        "iconPath": "images/首页.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/正确提示.png",
+        "iconPath": "images/正确提示.png",
+        "pagePath": "pages/dk/dk",
+        "text": "打卡"
+      },
+      {
+        "selectedIconPath": "images/用户.png",
+        "iconPath": "images/用户.png",
+        "pagePath": "pages/wo/wo",
+        "text": "我"
+      }
+    ]
+  }
+}
