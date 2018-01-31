@@ -33,6 +33,11 @@ SHOW VARIABLES LIKE 'storage_engine%';
 * InnoDB 不支持数据压缩，行锁机制,占磁盘空间比较大，对事物完整性要求高
 * MEMORY 不支持外键，表锁机制，适合数据少，快速访问
 
+* 索引类型：
+* PRIMARY 索引      => 在主键上自动创建
+* INDEX 索引          => 就是普通索引
+* UNIQUE 索引        => 相当于INDEX + Unique
+* FULLTEXT            => 只在MYISAM 存储引擎支持, 目的是全文索引，在内容系统中用的多， 在全英文网站用多(英文词独立). 中文数据不常用，意义不大 国内全文索引通常 使用 sphinx 来完成.
 
 ```python
 #数据表导出 txt格式
@@ -194,3 +199,18 @@ _ 通配符，能匹配单个字符
 ```
 
 ## 多表数据查询
+
+
+# 一般sql优化流程
+* 查询操作日志 show session/global status like 'Com%';查询操作日志
+* 设置慢查询时间 show variables like 'long_query_time'; set long_query_time=time;
+* 开启慢查询日志 show variable like "%slow_query%"; set global slow_query_log=1;
+* 分析慢查询日志里面的sql  select 查询语句：
+得到如下参数：
+type:连接方式（system.const为佳），避免为all
+extra:执行描述，避免using filesort;
+* 最后针对sql语句 优化 建立索引、分组。
+
+        ON TABLE_NAME FOR EACH ROW 里面
+        ON TABLE_NAME FOR EACH ROW 的
+        ON TABLE_NAME FOR EACH ROW 
