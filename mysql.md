@@ -200,6 +200,9 @@ _ 通配符，能匹配单个字符
 
 ## 多表数据查询
 
+        ON TABLE_NAME FOR EACH ROW 里面
+        ON TABLE_NAME FOR EACH ROW 的
+        ON TABLE_NAME FOR EACH ROW 
 
 # 一般sql优化流程
 * 查询操作日志 show session/global status like 'Com%';查询操作日志
@@ -211,6 +214,3 @@ type:连接方式（system.const为佳），避免为all
 extra:执行描述，避免using filesort;
 * 最后针对sql语句 优化 建立索引、分组。
 
-        ON TABLE_NAME FOR EACH ROW 里面
-        ON TABLE_NAME FOR EACH ROW 的
-        ON TABLE_NAME FOR EACH ROW 
