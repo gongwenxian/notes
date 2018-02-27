@@ -1,0 +1,46 @@
+学习笔记20180227
+1.Hibernate原生sql查询
+    1）步骤如下：获取Hibernate Session对象
+    2）编写SQL语句
+    3）通过SQLQUery方法创建查询对象
+    4）调用SQLQuery对象的addScalar()或addEntity()方法将选出的结果与标量值或实体进行关联，分别用于标量查询或实体查询
+    5）如果SQL语句包含参数，调用QUERY的setXxxx方法为参数赋值
+    6）调用QUERY的list方法返回查询的结果集
+    
+2.Hibernate标量查询
+    1）基础查询
+    session.createSQLQuery("select * from table").list();
+    2)确定查询的字符串和返回的字段和类型
+    session.createSQLQuery("select * from table")
+    .addScalar("name",StandardBasicTypes.STRING)
+    .addScalar("age",StandardBasicTypes.INT)
+    .list();
+    
+    3)基本流程
+    Session session = HibernateUtil.getSession();
+    Transaction tx = session.beginTransaction();
+    String sql = "";
+    List list = session.createSQLQuery(sql).list();
+    tx.commit();
+    session.close();
+    
+    4）实体查询
+    session.createSQLQuery("select * from table").addEntity(Person.class).list();
+    //返回的是一个Person实体的list，单表查询
+    
+    //多表联查
+    //
+    List list=session.createSQLQuery(sql).addEntity(A.class).addEntity(B.class).list();
+    for(Iterator iterator = list.iterator();iterator.hasNext();)
+    {
+        Object[] object = (Object[])iterator.next();
+        A a = (A)object[0];
+        B b = (B)object[1];
+    }
+    
+    5）绑定参数
+    session.createSQLQuery(sql).setParameter(name,nameValue);
+    //sql里面若为？则为.setParameter(number,nameValue)
+    //sql里面若为:name 则为.setParameter(name,nameValue)
+    
+    
